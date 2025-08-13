@@ -1,0 +1,16 @@
+project_name: "EHR-MLM-Benchmark"
+
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  models_dir: "models"
+  results_dir: "outputs"
+
+extraction:
+  include_conditions: true
+  include_medications: true
+  include_observations: true
+  include_procedures: true
+  include_diagnostic_reports: true
+  include_immunizations: true
+  include_encounters: true

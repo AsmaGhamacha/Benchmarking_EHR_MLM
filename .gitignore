@@ -41,7 +41,6 @@ data/*
 
 # outputs and temporary files
 outputs/
-reports/
 logs/
 *.log
 *.csv

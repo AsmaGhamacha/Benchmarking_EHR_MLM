@@ -3,6 +3,8 @@ project_name: "EHR-MLM-Benchmark"
 paths:
   raw_data: "data/raw"
   processed_data: "data/processed"
+  parsed_txt: "data/processed/parsed_txt"
+  cleaned_txt: "data/processed/cleaned_txt"
   models_dir: "models"
   results_dir: "outputs"
 

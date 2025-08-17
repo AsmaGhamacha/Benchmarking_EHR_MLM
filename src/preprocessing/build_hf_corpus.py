@@ -79,8 +79,7 @@ def main():
     for doc in texts:
         # tokenize per-document to avoid cross-doc leakage if you prefer
         ids = tokenizer(doc, add_special_tokens=False)["input_ids"]
-        if len(ids) > args.max_tokens: #SAFEGUARD truncate if longer than model max length
-            ids = ids[:args.max_tokens]
+
 
         # optional BOS/EOS for decoder-only (BioGPT)
         if bos is not None:

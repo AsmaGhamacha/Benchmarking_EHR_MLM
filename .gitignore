@@ -41,6 +41,7 @@ data/*
 
 # outputs and temporary files
 outputs/
+reports/
 logs/
 *.log
 *.csv
@@ -58,6 +59,8 @@ logs/
 *.pkl
 *.pickle
 *.joblib
+
+models/
 
 # OS/editor files
 .DS_Store

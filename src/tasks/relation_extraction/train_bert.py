@@ -111,6 +111,22 @@ def main():
 
     print("\n Step 9: Evaluate model on validation set...")
     preds = trainer.predict(val_dataset)
+
+    print("\n Step 10: Save metrics...")
+
+    os.makedirs(os.path.join(args.output_dir, "metrics"), exist_ok=True)
+
+    # Save evaluation metrics (loss, runtime, speed, etc.)
+    eval_metrics = trainer.evaluate(val_dataset)
+    with open(os.path.join(args.output_dir, "metrics", "eval_metrics.json"), "w") as f:
+        json.dump(eval_metrics, f, indent=2)
+
+    # Save training summary (last epoch)
+    if trainer.state.log_history:
+        train_metrics = trainer.state.log_history[-1]
+        with open(os.path.join(args.output_dir, "metrics", "training_summary.json"), "w") as f:
+            json.dump(train_metrics, f, indent=2)
+
     y_true = preds.label_ids
     y_pred = np.argmax(preds.predictions, axis=1)
     report = classification_report(y_true, y_pred, target_names=le.classes_, digits=4)

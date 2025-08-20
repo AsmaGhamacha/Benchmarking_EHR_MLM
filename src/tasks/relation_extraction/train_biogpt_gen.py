@@ -128,5 +128,18 @@ def main():
     tokenizer.save_pretrained(args.output_dir)
 
 
+    # Save runtime and metrics
+    metrics = trainer.state.log_history[-1] if trainer.state.log_history else {}
+    result = {
+        "train_runtime_sec": round(epoch_end - start, 2),
+        "train_loop_sec": round(epoch_end - epoch_start, 2),
+        "train_samples_per_sec": round(len(train_dataset) / (epoch_end - epoch_start), 2),
+        **metrics,
+    }
+
+    with open(os.path.join(args.output_dir, "training_metrics.json"), "w") as f:
+        json.dump(result, f, indent=2)
+
+        
 if __name__ == "__main__":
     main()
